@@ -1,0 +1,51 @@
+body {
+    font-family: arial,Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #007bff; 
+}
+header {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+nav a {
+    margin-right: 20px;
+}
+
+
+.banner {
+    background-image: url("images/college-banner.jpg"); 
+    background-size: cover;
+    height: 500px;
+    text-align: center;
+    color: white;
+    padding-top: 150px;
+}
+
+.banner h1 {
+    font-size: 48px;
+}
+main {
+    padding: 20px;
+}
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.feature-item {
+    flex-basis: 30%;
+    margin-bottom: 20px;
+}
+
+.cta {
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+

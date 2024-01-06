@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding-top: 50px;
+        }
+
+        .auth-section, .chat-section, .file-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .auth-form, .chat-box, .file-upload-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        input[type="text"], input[type="password"], input[type="file"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .messages {
+            height: 300px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            overflow-y: scroll;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .file-list {
+            border: 1px solid #ddd;
+            margin-top: 20px;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Section -->
+        <div class="auth-section">
+            <form class="auth-form">
+                <h2>CONNECT</h2>
+                <input type="text" placeholder="email" required>
+                <input type="password" placeholder="Password" required>
+                <p align="center"><button type="submit">Login</button>
+
+                            </form>
+        </div>
+
+        <!-- After Login: Chat and File Sharing Sections -->
+        <div class="post-login-sections" style="display: none;"> <!-- This should be toggled to 'block' on successful login -->
+
+            <!-- Chat Box Section -->
+              <h2>chat box</h2>
+            <div class="chat-section">
+                <div class="chat-box">
+                    <div class="messages">
+                        <!-- Messages will go here -->
+                    </div>
+                    <input type="text" placeholder="Type a message...">
+                    <button>Send</button>
+                </div>
+            </div>
+           
+
+            <!-- File Sharing Section -->
+            <div class="file-section">
+                <form class="file-upload-form">
+                    <h2>Share Files</h2>
+                    <input type="file">
+                    <button type="submit">Upload</button>
+                </form>
+                <div class="file-list">
+                    <!-- List of files will go here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <p align="center">
+        <a href="front.html"><button type="submit">Back</button></a>
+     </p>
+<script>
+    // Mock Login Functionality
+    document.querySelector('.auth-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevents form from actually submitting (for demonstration)
+
+        // Show the post-login sections
+        document.querySelector('.post-login-sections').style.display = 'block';
+        
+        // Hide the auth section
+        document.querySelector('.auth-section').style.display = 'none';
+    });
+
+    // Chat Functionality
+    document.querySelector('.chat-box button').addEventListener('click', function() {
+        const messageInput = document.querySelector('.chat-box input[type="text"]');
+        const message = messageInput.value.trim();
+        if (message) {
+            const messagesContainer = document.querySelector('.messages');
+            messagesContainer.innerHTML += '<div>' + message + '</div>';
+            messageInput.value = ''; // Clear the input field
+        }
+    });
+
+    // File Upload Display
+    document.querySelector('.file-upload-form input[type="file"]').addEventListener('change', function(event) {
+        const fileList = document.querySelector('.file-list');
+        const files = event.target.files;
+        fileList.innerHTML = ''; // Clear existing list
+
+        for (let i = 0; i < files.length; i++) {
+            fileList.innerHTML += '<div>' + files[i].name + '</div>';
+        }
+    });
+</script>
+
+</body>
+</html>
